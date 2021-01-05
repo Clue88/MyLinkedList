@@ -103,7 +103,7 @@ public class Tester {
             except(test, e);
         }
 
-        test = "MyLinkedList.add()";
+        test = "MyLinkedList.add(String value)";
         try {
             MyLinkedList m = new MyLinkedList();
             m.add("hello");
@@ -111,6 +111,21 @@ public class Tester {
             m.add("foo");
             m.add("bar");
             check(test, m.toString(), "[hello, world, foo, bar]");
+        } catch(RuntimeException e) {
+            except(test, e);
+        }
+
+        test = "MyLinkedList.get(int index)";
+        try {
+            MyLinkedList m = new MyLinkedList();
+            m.add("hello");
+            m.add("world");
+            m.add("foo");
+            m.add("bar");
+            check(test, m.get(3), "bar");
+            m.get(4);
+            noException(test, "IndexOutOfBoundsException");
+        } catch(IndexOutOfBoundsException e) {
         } catch(RuntimeException e) {
             except(test, e);
         }

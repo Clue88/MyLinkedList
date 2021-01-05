@@ -39,4 +39,15 @@ public class MyLinkedList {
 
         return true;
     }
+
+    public String get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index " + index + " is not in range");
+        }
+
+        Node curr = start;
+        int i = 0;
+        while (i < index) curr = curr.getNext();
+        return curr.getValue();
+    }
 }
