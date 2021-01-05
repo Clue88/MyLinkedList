@@ -12,12 +12,6 @@ public class Tester {
         if (args.length > 0 && Boolean.parseBoolean(args[0]) == false) DEBUG = false;
         String test = "";
 
-        try {
-            check(test, null, null);
-        } catch(RuntimeException e) {
-            System.out.println("here");
-        }
-
         test = "Node(String value)";
         try {
             Node n = new Node("hello");
@@ -137,6 +131,20 @@ public class Tester {
             check(test, m.get(3), "bar");
             m.get(4);
             noException(test, "IndexOutOfBoundsException");
+        } catch(IndexOutOfBoundsException e) {
+        } catch(RuntimeException e) {
+            except(test, e);
+        }
+
+        test = "MyLinkedList.set(int index, String value)";
+        try {
+            MyLinkedList m = new MyLinkedList();
+            m.add("hello");
+            m.add("world");
+            m.add("foo");
+            m.add("bar");
+            check(test, m.set(1, "huzzah"), "world");
+            check(test, m.toString(), "[hello, huzzah, foo, bar]");
         } catch(IndexOutOfBoundsException e) {
         } catch(RuntimeException e) {
             except(test, e);

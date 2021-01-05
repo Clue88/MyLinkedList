@@ -91,4 +91,16 @@ public class MyLinkedList {
 
         return getNthNode(index).getValue();
     }
+
+    public String set(int index, String value) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index " + index + " is not in range");
+        }
+
+        Node n = getNthNode(index);
+        String oldString = n.getValue();
+        n.setValue(value);
+
+        return oldString;
+    }
 }
