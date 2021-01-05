@@ -10,6 +10,19 @@ public class MyLinkedList {
         return size;
     }
 
+    private Node getNthNode(int n) {
+        if (n == 0) return start;
+        if (n == size - 1) return end;
+
+        Node curr = start;
+        int i = 0;
+        while (i < n) {
+            curr = curr.getNext();
+            i++;
+        }
+        return curr;
+    }
+
     public String toString() {
         if (size == 0) return "[]";
 
@@ -30,13 +43,44 @@ public class MyLinkedList {
         if (size == 0) {
             start = newValue;
             end = newValue;
-            size ++;
         } else {
             end.setNext(newValue);
             newValue.setPrev(end);
             end = newValue;
         }
 
+        size ++;
+        return true;
+    }
+
+    public boolean add(int index, String value) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Index " + index + " is not in range");
+        }
+
+        Node newValue = new Node(value);
+        if (size == 0) {
+            start = newValue;
+            end = newValue;
+            size ++;
+        } else if (index == size - 1) {
+            end.setNext(newValue);
+            newValue.setPrev(end);
+            end = newValue;
+        } else if (index == 0) {
+            start.setPrev(newValue);
+            newValue.setNext(start);
+            start = newValue;
+        } else {
+            Node newPrev = getNthNode(index - 1);
+            Node newNext = getNthNode(index);
+            newValue.setPrev(newPrev);
+            newValue.setNext(newNext);
+            newPrev.setNext(newValue);
+            newNext.setPrev(newValue);
+        }
+        
+        size ++;
         return true;
     }
 
@@ -45,9 +89,6 @@ public class MyLinkedList {
             throw new IndexOutOfBoundsException("Index " + index + " is not in range");
         }
 
-        Node curr = start;
-        int i = 0;
-        while (i < index) curr = curr.getNext();
-        return curr.getValue();
+        return getNthNode(index).getValue();
     }
 }

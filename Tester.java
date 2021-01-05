@@ -115,6 +115,18 @@ public class Tester {
             except(test, e);
         }
 
+        test = "MyLinkedList.add(int index, String value)";
+        try {
+            MyLinkedList m = new MyLinkedList();
+            m.add(0, "hello");
+            m.add(0, "world");
+            m.add(2, "foo");
+            m.add(1, "bar");
+            check(test, m.toString(), "[world, bar, hello, foo]");
+        } catch(RuntimeException e) {
+            except(test, e);
+        }
+
         test = "MyLinkedList.get(int index)";
         try {
             MyLinkedList m = new MyLinkedList();
