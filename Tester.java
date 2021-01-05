@@ -79,6 +79,14 @@ public class Tester {
             except(test, e);
         }
 
+        test = "MyLinkedList()";
+        try {
+            MyLinkedList m = new MyLinkedList();
+            nothing(m);
+        } catch(RuntimeException e) {
+            except(test, e);
+        }
+
         if (ERR == 0) System.out.println("All good!");
         else if (ERR == 1) System.out.println("Uh oh... 1 error found.");
         else System.out.println("Uh oh... " + ERR + " errors found.");
