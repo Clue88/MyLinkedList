@@ -95,6 +95,26 @@ public class Tester {
             except(test, e);
         }
 
+        test = "MyLinkedList.toString()";
+        try {
+            MyLinkedList m = new MyLinkedList();
+            check(test, m.toString(), "[]");
+        } catch(RuntimeException e) {
+            except(test, e);
+        }
+
+        test = "MyLinkedList.add()";
+        try {
+            MyLinkedList m = new MyLinkedList();
+            m.add("hello");
+            m.add("world");
+            m.add("foo");
+            m.add("bar");
+            check(test, m.toString(), "[hello, world, foo, bar]");
+        } catch(RuntimeException e) {
+            except(test, e);
+        }
+
         if (ERR == 0) System.out.println("All good!");
         else if (ERR == 1) System.out.println("Uh oh... 1 error found.");
         else System.out.println("Uh oh... " + ERR + " errors found.");
