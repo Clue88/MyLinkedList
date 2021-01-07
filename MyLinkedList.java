@@ -115,4 +115,32 @@ public class MyLinkedList {
 
         return oldString;
     }
+
+    public String remove(int index) {
+        String old;
+
+        if (size == 1) {
+            old = start.getData();
+            start = null;
+            end = null;
+        } else if (index == 0) {
+            old = start.getData();
+            start.getNext().setPrev(null);
+            start.setNext(null);
+        } else if (index == size - 1) {
+            old = end.getData();
+            end.getPrev().setNext(null);
+            end.setPrev(null);
+        } else {
+            Node oldNode = getNthNode(index);
+            old = oldNode.getData();
+            oldNode.getPrev().setNext(oldNode.getNext());
+            oldNode.getNext().setPrev(oldNode.getPrev());
+            oldNode.setPrev(null);
+            oldNode.setNext(null);
+        }
+
+        size--;
+        return old;
+    }
 }
