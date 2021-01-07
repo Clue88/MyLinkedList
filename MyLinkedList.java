@@ -53,7 +53,7 @@ public class MyLinkedList {
         return true;
     }
 
-    public boolean add(int index, String value) {
+    public void add(int index, String value) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Index " + index + " is not in range");
         }
@@ -81,7 +81,6 @@ public class MyLinkedList {
         }
         
         size ++;
-        return true;
     }
 
     public String get(int index) {
