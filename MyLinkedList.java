@@ -37,6 +37,20 @@ public class MyLinkedList {
         return out;
     }
 
+    public String toStringReversed() {
+        if (size == 0) return "[]";
+
+        String out = "[";
+        Node curr = end;
+        while (curr.getPrev() != null) {
+            out += curr.getValue() + ", ";
+            curr = curr.getPrev();
+        }
+        out += curr.getValue() + "]";
+
+        return out;
+    }
+
     public boolean add(String value) {
         Node newValue = new Node(value);
 
@@ -62,8 +76,7 @@ public class MyLinkedList {
         if (size == 0) {
             start = newValue;
             end = newValue;
-            size ++;
-        } else if (index == size - 1) {
+        } else if (index == size) {
             end.setNext(newValue);
             newValue.setPrev(end);
             end = newValue;
