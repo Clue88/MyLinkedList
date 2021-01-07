@@ -20,10 +20,10 @@ public class Tester {
             except(test, e);
         }
 
-        test = "Node.getValue()";
+        test = "Node.getData()";
         try {
             Node n = new Node("hello");
-            check(test, n.getValue(), "hello");
+            check(test, n.getData(), "hello");
         } catch(RuntimeException e) {
             except(test, e);
         }
@@ -32,7 +32,7 @@ public class Tester {
         try {
             Node n = new Node("hello");
             n.setValue("world");
-            check(test, n.getValue(), "world");
+            check(test, n.getData(), "world");
         } catch(RuntimeException e) {
             except(test, e);
         }

@@ -6,7 +6,7 @@ public class Node {
         data = value;
     }
 
-    public String getValue() {
+    public String getData() {
         return data;
     }
 

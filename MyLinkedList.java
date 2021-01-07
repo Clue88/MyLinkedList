@@ -29,10 +29,10 @@ public class MyLinkedList {
         String out = "[";
         Node curr = start;
         while (curr.getNext() != null) {
-            out += curr.getValue() + ", ";
+            out += curr.getData() + ", ";
             curr = curr.getNext();
         }
-        out += curr.getValue() + "]";
+        out += curr.getData() + "]";
 
         return out;
     }
@@ -43,10 +43,10 @@ public class MyLinkedList {
         String out = "[";
         Node curr = end;
         while (curr.getPrev() != null) {
-            out += curr.getValue() + ", ";
+            out += curr.getData() + ", ";
             curr = curr.getPrev();
         }
-        out += curr.getValue() + "]";
+        out += curr.getData() + "]";
 
         return out;
     }
@@ -101,7 +101,7 @@ public class MyLinkedList {
             throw new IndexOutOfBoundsException("Index " + index + " is not in range");
         }
 
-        return getNthNode(index).getValue();
+        return getNthNode(index).getData();
     }
 
     public String set(int index, String value) {
@@ -110,7 +110,7 @@ public class MyLinkedList {
         }
 
         Node n = getNthNode(index);
-        String oldString = n.getValue();
+        String oldString = n.getData();
         n.setValue(value);
 
         return oldString;
