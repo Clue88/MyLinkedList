@@ -117,6 +117,10 @@ public class MyLinkedList {
     }
 
     public String remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index " + index + " is not in range");
+        }
+
         String old;
 
         if (size == 1) {
@@ -125,12 +129,16 @@ public class MyLinkedList {
             end = null;
         } else if (index == 0) {
             old = start.getData();
-            start.getNext().setPrev(null);
+            Node newStart = start.getNext();
+            newStart.setPrev(null);
             start.setNext(null);
+            start = newStart;
         } else if (index == size - 1) {
             old = end.getData();
-            end.getPrev().setNext(null);
+            Node newEnd = end.getPrev();
+            newEnd.setNext(null);
             end.setPrev(null);
+            end = newEnd;
         } else {
             Node oldNode = getNthNode(index);
             old = oldNode.getData();

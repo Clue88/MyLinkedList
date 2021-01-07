@@ -150,6 +150,59 @@ public class Tester {
             except(test, e);
         }
 
+        test = "MyLinkedList.toStringReversed()";
+        try {
+            MyLinkedList m = new MyLinkedList();
+            m.add("hello");
+            m.add("world");
+            m.add("foo");
+            m.add("bar");
+            check(test, m.toStringReversed(), "[bar, foo, world, hello]");
+        } catch(RuntimeException e) {
+            except(test, e);
+        }
+
+        test = "MyLinkedList.remove()";
+        try {
+            MyLinkedList m = new MyLinkedList();
+            m.add("test");
+            m.remove(0);
+            check(test, m.toString(), "[]");
+            m.add("foo");
+            m.add("bar");
+            m.add("baz");
+            m.remove(0);
+            check(test, m.toString(), "[bar, baz]");
+            m.remove(2);
+            check(test, m.toString(), "[bar]");
+            m.add("next");
+            m.add("test");
+            m.remove(1);
+            check(test, m.toString(), "[bar, test]");
+            m.remove(10);
+            noException(test, "IndexOutOfBoundsException");
+        } catch(IndexOutOfBoundsException e) {
+        } catch(RuntimeException e) {
+            except(test, e);
+        }
+
+        test = "MyLinkedList.extend()";
+        try {
+            MyLinkedList m1 = new MyLinkedList();
+            MyLinkedList m2 = new MyLinkedList();
+            m1.add("1");
+            m1.add("2");
+            m1.add("3");
+            m2.add("4");
+            m2.add("5");
+            m2.add("6");
+            m1.extend(m2);
+            check(test, m1.toString(), "[1, 2, 3, 4, 5, 6]");
+            check(test, m2.toString(), "[]");
+        } catch(RuntimeException e) {
+            except(test, e);
+        }
+
         if (ERR == 0) System.out.println("All good!");
         else if (ERR == 1) System.out.println("Uh oh... 1 error found.");
         else System.out.println("Uh oh... " + ERR + " errors found.");
