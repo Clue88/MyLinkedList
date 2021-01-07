@@ -28,10 +28,10 @@ public class Tester {
             except(test, e);
         }
 
-        test = "Node.setValue()";
+        test = "Node.setData()";
         try {
             Node n = new Node("hello");
-            n.setValue("world");
+            n.setData("world");
             check(test, n.getData(), "world");
         } catch(RuntimeException e) {
             except(test, e);

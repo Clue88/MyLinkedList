@@ -10,7 +10,7 @@ public class Node {
         return data;
     }
 
-    public void setValue(String value) {
+    public void setData(String value) {
         data = value;
     }
 

@@ -111,7 +111,7 @@ public class MyLinkedList {
 
         Node n = getNthNode(index);
         String oldString = n.getData();
-        n.setValue(value);
+        n.setData(value);
 
         return oldString;
     }
