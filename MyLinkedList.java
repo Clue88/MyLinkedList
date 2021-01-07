@@ -143,4 +143,13 @@ public class MyLinkedList {
         size--;
         return old;
     }
+
+    public void extend(MyLinkedList other) {
+        end.setNext(other.start);
+        other.start.setPrev(end);
+        size += other.size();
+        other.start = null;
+        other.end = null;
+        other.size = 0;
+    }
 }
