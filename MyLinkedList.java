@@ -153,8 +153,15 @@ public class MyLinkedList {
     }
 
     public void extend(MyLinkedList other) {
-        end.setNext(other.start);
-        other.start.setPrev(end);
+        if (other.size() == 0) {
+            return;
+        } else if (size == 0) {
+            start = other.start;
+        } else {
+            end.setNext(other.start);
+            other.start.setPrev(end);
+        }
+        
         end = other.end;
         size += other.size();
         other.start = null;
